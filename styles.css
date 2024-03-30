@@ -572,6 +572,10 @@ video {
   top: 0.5rem;
 }
 
+.col-auto{
+  grid-column: auto;
+}
+
 .m-auto{
   margin: auto;
 }
@@ -621,8 +625,24 @@ video {
   grid-auto-flow: row;
 }
 
+.grid-flow-col{
+  grid-auto-flow: column;
+}
+
 .grid-cols-4{
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-tariff-section{
+  grid-template-columns: repeat(4, auto);
+}
+
+.grid-cols-\[repeat\(4\2c _auto\)\]{
+  grid-template-columns: repeat(4, auto);
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row{

@@ -11,6 +11,9 @@ module.exports = {
       screens: {
          'desktop': '1300px',
       },
+      gridTemplateColumns: {
+        'tariff-section': 'repeat(4, auto)',
+      },
       colors: {
         batao: {
           bg: '#F9FCFF',
