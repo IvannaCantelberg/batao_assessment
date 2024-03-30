@@ -7,3 +7,22 @@
 .card {
     @apply py-8 px-8 bg-batao-card shadow-lg shadow-batao-shadow rounded-2xl;
 }
+
+.card-sm {
+    @apply py-7 px-6 bg-batao-card shadow-lg shadow-batao-shadow rounded-2xl;
+} 
+
+.selected {
+    position: relative;
+}
+
+.selected::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    @apply right-6;
+    width: calc(100% - 48px);
+    height: 3px;
+    @apply bg-batao-primary;
+
+}
