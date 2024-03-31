@@ -72,8 +72,48 @@
     margin-bottom: 12px;
     padding-left: 8px;
     margin-left: -8px;
+    @apply xl:m-0 xl:p-0 xl:overflow-auto
 }
 
 .divider-x {
     @apply w-full h-[1px] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-batao-accent to-transparent opacity-80;
+}
+
+.btn-accent {
+    @apply bg-batao-accent text-white text-xs px-11 py-3 rounded-md shadow-lg hover:shadow-batao-accent;
+    transition: box-shadow 0.2s linear;
+}
+
+.btn-light {
+    @apply bg-batao-card text-batao-text text-xs px-11 py-3 rounded-md hover:shadow-lg ;
+    transition: box-shadow 0.2s linear;
+}
+
+.modal-backdrop {
+    @apply bg-black bg-opacity-20 h-screen w-screen fixed top-0 bottom-0 right-0 left-0;
+
+}
+
+.modal {
+    margin: auto;   
+    width: fit-content;
+    /* visibility: hidden; */
+
+    transform: translate(0, -50%);
+    transition: transform 4s .3s ease-out;
+
+    /* @apply fade; */
+}
+
+.fade {
+    opacity: 0;
+    transition: opacity 5s  3s linear;
+}
+
+.modal.open{
+    transform: translate(0, 0);
+    /* visibility: visible; */
+
+    /* opacity: 1; */
+    
 }

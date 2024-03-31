@@ -1,5 +1,9 @@
 const ACTIVE_TAB = 'active';
 const TAB_CLASS = 'tab';
+const MODAL_BACKDROP = 'modal-backdrop';
+const MODAL_CONTAINER = 'modal';
+const MODAL_HANDLER = '[data-modal]';
+const MODAL_CLOSE = '[data-close]';
 
 let selectedTabNode = null;
 
@@ -12,21 +16,7 @@ function onTabClick(event) {
   selectedTabNode = self;
 
   console.log(event, selectedTabNode);
-  //   let activeTabs = document.querySelectorAll('.active');
-
-  //   // deactivate existing active tab and panel
-  //   activeTabs.forEach(function(tab) {
-  //     tab.className = tab.className.replace('active', '');
-  //   });
-
-  //   // activate new tab and panel
-  //   event.target.parentElement.className += ' active';
-  //   document.getElementById(event.target.href.split('#')[1]).className += ' active';
 }
-
-// const settleClickHandler = (node) => {
-//   node.addEventListener('click', onTabClick, false);
-// };
 
 const initTabs = () => {
   const element = document.getElementById('tabs');
@@ -41,4 +31,36 @@ const initTabs = () => {
 
 initTabs();
 
-// element.addEventListener('click', onTabClick, false);
+const modalBackdropEl = document.getElementsByClassName(MODAL_BACKDROP)[0];
+const modalEl = modalBackdropEl.getElementsByClassName(MODAL_CONTAINER)[0];
+const modalCloseElHandlers = modalEl.querySelectorAll(MODAL_CLOSE);
+
+const initModalHandler = () => {
+  const handlers = document.querySelectorAll(MODAL_HANDLER);
+  handlers.forEach((handler) => {
+    handler.addEventListener('click', openModal, true);
+  });
+};
+
+initModalHandler();
+
+function openModal() {
+  modalBackdropEl.setAttribute('style', 'display: flex');
+  modalEl.classList.add('open');
+}
+
+const hideModal = (event) => {
+  if (
+    event.target.classList.contains(MODAL_BACKDROP) ||
+    event.target.matches(MODAL_CLOSE)
+  ) {
+    modalBackdropEl.setAttribute('style', 'display: none');
+    modalEl.classList.remove('open');
+  }
+};
+
+modalBackdropEl.addEventListener('click', hideModal, true);
+
+modalCloseElHandlers.forEach((handler) => {
+  handler.addEventListener('click', hideModal, true);
+});

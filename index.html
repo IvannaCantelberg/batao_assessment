@@ -162,7 +162,7 @@
                                 € 358,00
                             </p>
                         </div>
-                        <button class="bg-batao-accent text-white text-xs px-11 py-3 rounded-md">Aanvragen</button>
+                        <button class="btn-accent" data-modal>Aanvragen</button>
 
                         <hr class="block xl:hidden divider-x" />
 
@@ -261,7 +261,7 @@
                                 € 358,00
                             </p>
                         </div>
-                        <button class="bg-batao-accent text-white text-xs px-11 py-3 rounded-md">Aanvragen</button>
+                        <button class="btn-accent" data-modal>Aanvragen</button>
 
                         <hr class="block xl:hidden divider-x" />
                         <div class="flex flex-col gap-2 items-center xl:hidden ">
@@ -358,7 +358,7 @@
                                 € 358,00
                             </p>
                         </div>
-                        <button class="bg-batao-accent text-white text-xs px-11 py-3 rounded-md">Aanvragen</button>
+                        <button class="btn-accent" data-modal>Aanvragen</button>
 
                         <hr class="block xl:hidden divider-x" />
                         <div class="flex flex-col gap-2 items-center xl:hidden ">
@@ -526,6 +526,19 @@
 
         </section>
     </main>
+
+    <div class="modal-backdrop flex flex-col" style="display: none;">
+        <section class="modal card">
+            <h2 class="text-xl text-batao-primary text-center mb-8">U vraag aan voor</h2>
+
+
+            <footer class="flex gap-4 justify-end">
+                <button type="button" class="btn-accent">Aanvragen</button>
+                <button type="button" class="btn-light" data-close>Terug</button>
+            </footer>
+
+        </section>
+    </div>
 
     <script src="src/index.js"></script>
 </body>
