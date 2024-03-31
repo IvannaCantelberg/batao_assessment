@@ -9,9 +9,13 @@
 }
 
 .card-sm {
-    @apply py-7 px-6 bg-batao-card shadow-lg shadow-batao-shadow rounded-2xl;
+    @apply py-7 px-6 bg-batao-card shadow-lg shadow-batao-shadow  rounded-2xl;
     min-width: 190px;
 } 
+
+.hovered {
+    @apply hover:shadow-xl hover:shadow-batao-shadow
+}
 
 .card-sm .label {
     transition: all  0.2s linear;
@@ -72,7 +76,7 @@
     margin-bottom: 12px;
     padding-left: 8px;
     margin-left: -8px;
-    @apply xl:m-0 xl:p-0 xl:overflow-auto
+    @apply xl:m-0 xl:p-0 xl:overflow-visible
 }
 
 .divider-x {
