@@ -556,12 +556,32 @@ video {
   --tw-contain-style:  ;
 }
 
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .absolute{
   position: absolute;
 }
 
 .relative{
   position: relative;
+}
+
+.-top-5{
+  top: -1.25rem;
+}
+
+.right-0{
+  right: 0px;
 }
 
 .right-2{
@@ -576,18 +596,23 @@ video {
   margin: auto;
 }
 
-.my-4{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
 }
 
-.mb-16{
-  margin-bottom: 4rem;
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-7{
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.mb-20{
+  margin-bottom: 5rem;
 }
 
 .mb-6{
@@ -618,16 +643,16 @@ video {
   width: 0.75rem;
 }
 
-.w-3\/4{
-  width: 75%;
-}
-
 .w-4\/5{
   width: 80%;
 }
 
 .flex-none{
   flex: none;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 .grid-flow-row{
@@ -644,6 +669,10 @@ video {
 
 .items-center{
   align-items: center;
+}
+
+.justify-end{
+  justify-content: flex-end;
 }
 
 .gap-2{
@@ -676,6 +705,11 @@ video {
   background-color: rgb(249 252 255 / var(--tw-bg-opacity));
 }
 
+.bg-batao-green{
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 86 14 / var(--tw-bg-opacity));
+}
+
 .bg-batao-label{
   --tw-bg-opacity: 1;
   background-color: rgb(128 128 128 / var(--tw-bg-opacity));
@@ -689,6 +723,11 @@ video {
 .px-11{
   padding-left: 2.75rem;
   padding-right: 2.75rem;
+}
+
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .px-\[10px\]{
@@ -706,23 +745,12 @@ video {
   padding-bottom: 5px;
 }
 
-.px-8{
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.px-6{
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 .pb-44{
   padding-bottom: 11rem;
+}
+
+.pr-\[4\.5rem\]{
+  padding-right: 4.5rem;
 }
 
 .pt-28{
@@ -737,8 +765,8 @@ video {
   font-family: "Work Sans";
 }
 
-.text-6xl{
-  font-size: 3.75rem;
+.text-5xl{
+  font-size: 3rem;
   line-height: 1;
 }
 
@@ -759,16 +787,6 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-5xl{
-  font-size: 3rem;
-  line-height: 1;
-}
-
-.text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .font-bold{
@@ -875,18 +893,45 @@ video {
   background-color: rgb(53 53 101 / var(--tw-bg-opacity));
 }
 
-@media (min-width: 768px){
-  .md\:mx-auto{
-    margin-left: auto;
-    margin-right: auto;
-  }
+.toggle{
+  position: relative;
+  display: block;
+  height: 37px;
+  width: 70px;
+  border-radius: 10px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding: 0.25rem;
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: #90B8E840;
+  --tw-shadow: var(--tw-shadow-colored);
+}
 
+.toggle::before{
+  position: absolute;
+  left: 0.25rem;
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(53 53 101 / var(--tw-bg-opacity));
+  padding: 0.25rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  content: var(--tw-content);
+  transition-duration: 300ms;
+}
+
+.peer:checked ~ .toggle::before{
+  content: var(--tw-content);
+  left: 36px;
+}
+
+@media (min-width: 768px){
   .md\:grid{
     display: grid;
-  }
-
-  .md\:w-4\/5{
-    width: 80%;
   }
 
   .md\:grid-flow-row{
@@ -900,39 +945,9 @@ video {
   .md\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-
-  .md\:text-5xl{
-    font-size: 3rem;
-    line-height: 1;
-  }
-}
-
-@media (min-width: 1024px){
-  .lg\:mx-auto{
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .lg\:w-3\/4{
-    width: 75%;
-  }
-
-  .lg\:w-4\/5{
-    width: 80%;
-  }
-
-  .lg\:text-5xl{
-    font-size: 3rem;
-    line-height: 1;
-  }
 }
 
 @media (min-width: 1280px){
-  .xl\:mx-auto{
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .xl\:flex{
     display: flex;
   }
@@ -963,16 +978,6 @@ video {
 
   .xl\:gap-6{
     gap: 1.5rem;
-  }
-
-  .xl\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .xl\:px-8{
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 
   .xl\:text-6xl{
