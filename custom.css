@@ -10,13 +10,48 @@
 
 .card-sm {
     @apply py-7 px-6 bg-batao-card shadow-lg shadow-batao-shadow rounded-2xl;
+    min-width: 190px;
 } 
 
-.selected {
+.card-sm .label {
+    transition: all  0.2s linear;
+    @apply absolute top-2 right-2 py-[5px] px-[10px] bg-batao-label text-white text-xs leading-[14px] rounded-md;
+}
+
+.card-sm .count {
+    @apply text-batao-text font-bold text-[40px] leading-none
+}
+
+.card-sm .title {
+    @apply text-batao-text text-base leading-5
+}
+
+.card-sm .sub-title {
+    @apply text-batao-disabled text-xs leading-4
+}
+
+
+.card-sm.active .label {
+    @apply bg-batao-primary; 
+}
+
+.card-sm.active .count {
+    @apply text-batao-primary
+}
+
+.card-sm.active .title {
+    @apply text-batao-primary 
+}
+
+.card-sm.active .sub-title {
+    @apply text-batao-sub-text
+}
+
+.card-sm.active {
     position: relative;
 }
 
-.selected::after {
+.active::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -24,10 +59,17 @@
     width: calc(100% - 48px);
     height: 3px;
     @apply bg-batao-primary;
-
 }
 
 .toggle {
     @apply block relative shadow-lg shadow-batao-shadow bg-batao-card  w-[70px] h-[37px] p-1 rounded-[10px] before:absolute before:bg-batao-primary before:w-[30px] before:h-[30px] before:p-1 before:rounded-[10px] before:transition-all before:duration-300 before:left-1 peer-checked:before:left-[36px] ;
 
+}
+
+.tabs-sm-screen {
+    overflow-x: auto;
+    padding-bottom: 20px;
+    margin-bottom: 12px;
+    padding-left: 8px;
+    margin-left: -8px;
 }

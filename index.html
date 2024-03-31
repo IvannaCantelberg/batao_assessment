@@ -10,12 +10,12 @@
 
 <body class="antialiased">
     <main class="bg-batao-bg font-work ">
-        <section class="pt-28 pb-44 px-6 desktop:w-[1296px] desktop:px-0 m-auto">
+        <section class="py-16 xl:pt-28 xl:pb-44 px-6 desktop:w-[1296px] desktop:px-0 m-auto">
             <div class="mb-20">
                 <h1 class="text-5xl xl:text-6xl font-semibold text-batao-primary text-center mb-8">
                     Batao server hosting prijzen en plannen
                 </h1>
-                <p class="text-base xl:text-xl text-batao-text text-center w-4/5 mx-auto xl:w-3/4">
+                <p class="text-base xl:text-xl text-batao-text text-center w-4/5 mx-auto xl:w-3/4 w-full">
                     Onze server specialisten staan graag voor je klaar, maak gebruik van de
                     14-dagen gratis trial
                     en bepaal of je door wilt gaan met onze hosting. Ben je al klant? Claim je voordeel!
@@ -29,67 +29,65 @@
                     10% korting
                 </span>
                 <div class="flex gap-4 items-center justify-end ">
-                    <span class="text-xl text-batao-text">Maandelijks</span>
+                    <span class="text-base xl:text-xl text-batao-text">Maandelijks</span>
                     <label for="toggle" class="flex items-center cursor-pointer">
                         <input type="checkbox" id="toggle" class="sr-only peer">
                         <div class="toggle">
                         </div>
                     </label>
-                    <span class="text-xl  text-batao-text">Jaarlijks</span>
+                    <span class="text-base xl:text-xl  text-batao-text">Jaarlijks</span>
                 </div>
             </div>
 
 
-            <div class="xl:grid xl:grid-flow-col xl:grid-cols-[200px,_auto] xl:gap-6 md:grid md:grid-flow-row gap-8">
+            <div class="xl:grid xl:grid-flow-col xl:grid-cols-[200px,_auto] xl:gap-6 grid grid-flow-row">
                 <!-- Tabs -->
-                <div class="xl:flex xl:flex-col gap-4 flex-none md:grid md:grid-flow-col">
-                    <div class="card-sm relative selected">
-                        <span
-                            class="absolute top-2 right-2 py-[5px] px-[10px] bg-batao-primary text-white text-xs leading-[14px] rounded-md">
-                            2 maanden gratis</span>
+                <div id="tabs" class="xl:flex xl:flex-col gap-4 flex-none grid grid-flow-col tabs-sm-screen">
+                    <div class="tab card-sm relative active cursor-pointer" id="tab1">
+                        <span class="label">
+                            2 maanden gratis
+                        </span>
                         <div class="flex gap-4 mt-2">
-                            <p class="text-batao-primary font-bold text-[40px] leading-none">1</p>
+                            <p class="count">1</p>
                             <div>
-                                <p class="text-batao-primary text-base leading-5">Jaar contract</p>
-                                <p class="text-batao-sub-text text-xs leading-4">Incl. verhuis service</p>
+                                <p class="title">Jaar contract</p>
+                                <p class="sub-title">Incl. verhuis service</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-sm  relative">
-                        <span
-                            class="absolute top-2 right-2 py-[5px] px-[10px] bg-batao-label text-white  text-xs  leading-[14px]  rounded-md">
+                    <div class="tab card-sm  relative cursor-pointer" id="tab2">
+                        <span class="label">
                             4 maanden gratis</span>
                         <div class="flex gap-4 mt-2">
-                            <p class="text-batao-text font-bold text-[40px] leading-none">2</p>
+                            <p class="count">2</p>
                             <div>
-                                <p class="text-batao-text text-base ">Jaar contract</p>
-                                <p class="text-batao-disabled text-xs ">Incl. verhuis service</p>
+                                <p class="title">Jaar contract</p>
+                                <p class="sub-title">Incl. verhuis service</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card-sm  relative">
-                        <span
-                            class="absolute top-2 right-2 py-[5px] px-[10px] bg-batao-label text-white text-xs leading-[14px]  rounded-md">
+                    <div class="tab card-sm  relative cursor-pointer" id="tab3">
+                        <span class="label">
                             6 maanden gratis</span>
                         <div class="flex gap-4 mt-2">
-                            <p class="text-batao-text font-bold text-[40px] leading-none">3</p>
+                            <p class="count">3</p>
                             <div>
-                                <p class="text-batao-text text-base">Jaar contract</p>
-                                <p class="text-batao-disabled text-xs">Incl. verhuis service</p>
+                                <p class="title">Jaar contract</p>
+                                <p class="sub-title">Incl. verhuis service</p>
                             </div>
                         </div>
                     </div>
                     <!-- Geen Contract -->
-                    <div class="card-sm ">
-                        <p class="text-batao-text text-base ">Jaar contract</p>
-                        <p class="text-batao-disabled text-xs">Incl. verhuis service</p>
+                    <div class="card-sm">
+                        <p class="title ">Jaar contract</p>
+                        <p class="sub-title">Incl. verhuis service</p>
                     </div>
 
                 </div>
-                <!-- Tarief section   306   +   232 * 3 -->
-                <div class="grid xl:grid-cols-tariff-section md:grid-cols-4 grid-flow-row gap-6">
-                    <div class="card ">
+                <!-- Tarief section  -->
+                <div class="grid xl:grid-cols-tariff-section sm:grid-cols-3 grid-cols-1 grid-flow-row gap-6">
+                    <div class="card xl:block hidden">
                         <h3 class="text-batao-primary text-base font-bold mb-6">
                             Geselecteerd: 1 jaar contract
                         </h3>
@@ -138,6 +136,58 @@
                             </p>
                         </div>
                         <button class="bg-batao-accent text-white text-xs px-11 py-3 rounded-md">Aanvragen</button>
+
+                        <div class="flex flex-col gap-2 items-center xl:hidden block ">
+                            <p class="text-batao-text text-base font-bold">
+                                Processor:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                AMD Ryzen 5 3600
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Cores:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                Hexa-Core
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Geheugen:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                RAM 64GB DDR4
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Opslag:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                SSD 3 x 512 GB
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Bandbreedte:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                1 Gbit/s
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Aantal klanten:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                3
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Backup frequentie:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                Wekelijks
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Support:
+                            </p>
+
+                            <p class=" text-batao-text text-base">
+                                Kantooruren
+                            </p>
+                        </div>
                     </div>
 
                     <div class="card flex flex-col gap-8 items-center">
@@ -156,6 +206,56 @@
                             </p>
                         </div>
                         <button class="bg-batao-accent text-white text-xs px-11 py-3 rounded-md">Aanvragen</button>
+                        <div class="flex flex-col gap-2 items-center xl:hidden block ">
+                            <p class="text-batao-text text-base font-bold">
+                                Processor:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                AMD Ryzen 5 3600
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Cores:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                Hexa-Core
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Geheugen:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                RAM 64GB DDR4
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Opslag:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                SSD 2 x 512 GB
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Bandbreedte:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                1 Gbit/s
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Aantal klanten:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                1 (Privé server)
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Backup frequentie:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                Dagelijks
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Support:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                24 uur per dag
+                            </p>
+                        </div>
                     </div>
 
                     <div class="card flex flex-col gap-8 items-center">
@@ -174,10 +274,60 @@
                             </p>
                         </div>
                         <button class="bg-batao-accent text-white text-xs px-11 py-3 rounded-md">Aanvragen</button>
+                        <div class="flex flex-col gap-2 items-center xl:hidden block ">
+                            <p class="text-batao-text text-base font-bold">
+                                Processor:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                AMD Ryzen 7 3700X
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Cores:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                Octa-Core
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Geheugen:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                RAM 64GB DDR4 ECC
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Opslag:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                SSD 2 x 1 TB
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Bandbreedte:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                1 Gbit/s
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Aantal klanten:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                1 (Privé server)
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Backup frequentie:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                Dagelijks
+                            </p>
+                            <p class="text-batao-text text-base font-bold">
+                                Support:
+                            </p>
+                            <p class=" text-batao-text text-base">
+                                24 uur per dag
+                            </p>
+                        </div>
                     </div>
 
                     <!-- info -->
-                    <div class="card flex flex-col gap-8">
+                    <div class="card xl:flex flex-col gap-8 hidden">
                         <p class="text-batao-text text-base font-bold">
                             Processor
                         </p>
@@ -205,7 +355,7 @@
 
                     </div>
 
-                    <div class="card flex flex-col gap-8 items-center">
+                    <div class="card xl:flex flex-col gap-8 items-center hidden">
                         <p class=" text-batao-text text-base">
                             AMD Ryzen 5 3600
                         </p>
@@ -231,7 +381,7 @@
                             Kantooruren
                         </p>
                     </div>
-                    <div class="card flex flex-col gap-8 items-center">
+                    <div class="card xl:flex flex-col gap-8 items-center hidden">
                         <p class=" text-batao-text text-base">
                             AMD Ryzen 5 3600
                         </p>
@@ -257,7 +407,7 @@
                             24 uur per dag
                         </p>
                     </div>
-                    <div class="card flex flex-col gap-8 items-center">
+                    <div class="card xl:flex flex-col gap-8 items-center hidden">
                         <p class=" text-batao-text text-base">
                             AMD Ryzen 7 3700X
                         </p>
@@ -289,6 +439,8 @@
 
         </section>
     </main>
+
+    <script src="src/index.js"></script>
 </body>
 
 </html>
