@@ -1106,6 +1106,10 @@ video {
     grid-template-columns: minmax(auto, 300px) repeat(3, minmax(230px, auto));
   }
 
+  .xl\:grid-cols-\[210px\2c _auto\]{
+    grid-template-columns: 210px auto;
+  }
+
   .xl\:flex-col{
     flex-direction: column;
   }
