@@ -9,10 +9,10 @@ module.exports = {
         ]
       }, 
       screens: {
-         'desktop': '1300px',
+         'desktop': '1360px',
       },
       gridTemplateColumns: {
-        'tariff-section': 'repeat(4, auto)',
+        'tariff-section': 'minmax(auto, 300px) repeat(3, minmax(230px, auto))',
       },
       colors: {
         batao: {
