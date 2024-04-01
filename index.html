@@ -42,46 +42,24 @@
 
             <div class="xl:grid xl:grid-flow-col xl:grid-cols-[210px,_auto] xl:gap-6 grid grid-flow-row">
                 <!-- Tabs -->
-                <div id="tabs" class="xl:flex xl:flex-col gap-4 flex-none grid grid-flow-col tabs-sm-screen">
-                    <div class="tab card-sm relative active cursor-pointer hovered" id="tab1">
+                <div id="tabs" class="xl:flex xl:flex-col gap-4 flex-none grid grid-flow-col tabs-sm-screen"
+                    data-bind="foreach: contractsData">
+                    <div class="tab card-sm relative cursor-pointer hovered" id="tab1"
+                        data-bind="click: $parent.selectContract, attr: {'item-index': $index}, css: { 'active': $parent.selectedContract() === $index()  }">
+                        <!-- ko ifnot: !$data.monthsGratis -->
                         <span class="label">
-                            2 maanden gratis
+                            <span data-bind="text: $data.monthsGratis"></span> maanden gratis
                         </span>
+                        <!-- /ko -->
                         <div class="flex gap-4 mt-2">
-                            <p class="count">1</p>
+                            <!-- ko ifnot: !$data.years -->
+                            <p class="count" data-bind="text: $data.years"></p>
+                            <!-- /ko -->
                             <div>
                                 <p class="title">Jaar contract</p>
                                 <p class="sub-title">Incl. verhuis service</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="tab card-sm  relative cursor-pointer hovered" id="tab2">
-                        <span class="label">
-                            4 maanden gratis</span>
-                        <div class="flex gap-4 mt-2">
-                            <p class="count">2</p>
-                            <div>
-                                <p class="title">Jaar contract</p>
-                                <p class="sub-title">Incl. verhuis service</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab card-sm  relative cursor-pointer hovered" id="tab3">
-                        <span class="label">
-                            6 maanden gratis</span>
-                        <div class="flex gap-4 mt-2">
-                            <p class="count">3</p>
-                            <div>
-                                <p class="title">Jaar contract</p>
-                                <p class="sub-title">Incl. verhuis service</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Geen Contract -->
-                    <div class="card-sm">
-                        <p class="title ">Jaar contract</p>
-                        <p class="sub-title">Incl. verhuis service</p>
                     </div>
 
                 </div>
@@ -527,7 +505,7 @@
         </section>
     </main>
 
-    <dialog class="modal-backdrop flex flex-col p-6" style="display: none;">
+    <dialog class="modal-backdrop flex flex-col p-4" style="display: none;">
         <section class="modal card">
             <h2 class="text-xl text-batao-primary text-center mb-8">Laat uw gegevens achter voor meer informatie</h2>
 
@@ -545,7 +523,7 @@
                 </label>
                 <div class="flex gap-4 justify-end mt-8 xl:col-span-2">
                     <button type="submit" class="btn-light" data-close>Annuleren</button>
-                    <button type="button" class="btn-accent">Verstuur</button>
+                    <button type="button" class="btn-primary">Verstuur</button>
                 </div>
             </form>
 
@@ -553,7 +531,7 @@
 
         </section>
     </dialog>
-
+    <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="src/index.js"></script>
 </body>
 

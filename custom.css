@@ -88,6 +88,11 @@
     transition: box-shadow 0.2s linear;
 }
 
+.btn-primary {
+    @apply bg-batao-primary text-white text-xs px-11 py-3 rounded-md shadow-lg hover:shadow-batao-primary;
+        transition: box-shadow 0.2s linear;
+}
+
 .btn-light {
     @apply bg-batao-card text-batao-text text-xs px-11 py-3 rounded-md shadow-md shadow-batao-shadow hover:shadow-batao-shadow hover:shadow-xl;
     transition: box-shadow 0.2s linear;
@@ -101,6 +106,7 @@
 .modal {
     margin: auto;   
     width: fit-content;
+    max-width: 500px;
     /* visibility: hidden; */
 
     transform: translate(0, -50%);
