@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batao Hosting test</title>
+    <title>Batao Hosting assessment</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body class="antialiased">
-    <main class="bg-batao-bg font-work ">
+    <main id="app" class="bg-batao-bg font-work ">
         <section class="py-16 xl:pt-28 xl:pb-44 px-6 desktop:w-[1296px] desktop:px-0 m-auto">
             <div class="mb-20">
                 <h1 class="text-5xl xl:text-6xl font-semibold text-batao-primary text-center mb-8">
@@ -44,27 +44,17 @@
                 <!-- Tabs -->
                 <div id="tabs" class="xl:flex xl:flex-col gap-4 flex-none grid grid-flow-col tabs-sm-screen"
                     data-bind="foreach: contractsData">
-                    <div class="tab card-sm relative cursor-pointer hovered" id="tab1"
-                        data-bind="click: $parent.selectContract, attr: {'item-index': $index}, css: { 'active': $parent.selectedContract() === $index()  }">
-                        <!-- ko ifnot: !$data.monthsGratis -->
-                        <span class="label">
-                            <span data-bind="text: $data.monthsGratis"></span> maanden gratis
-                        </span>
-                        <!-- /ko -->
-                        <div class="flex gap-4 mt-2">
-                            <!-- ko ifnot: !$data.years -->
-                            <p class="count" data-bind="text: $data.years"></p>
-                            <!-- /ko -->
-                            <div>
-                                <p class="title">Jaar contract</p>
-                                <p class="sub-title">Incl. verhuis service</p>
-                            </div>
-                        </div>
-                    </div>
 
+                    <contract
+                        data-bind="attr: {'item-index': $index, 'is-selected': ($parent.selectedContract() === $index())}"
+                        params="data: $data, 
+                        index: $index(),
+                        isSelected: $parent.selectedContract() === $index(),
+                        onSelect: (index) => $parent.onContractSelect(index)"></contract>
                 </div>
                 <!-- Tarief section  -->
-                <div class="grid xl:grid-cols-tariff-section sm:grid-cols-3 grid-cols-1 grid-flow-row gap-6">
+                <div id="tariffs"
+                    class="grid xl:grid-cols-tariff-section sm:grid-cols-3 grid-cols-1 grid-flow-row gap-6">
                     <div class="card xl:block hidden">
                         <h3 class="text-batao-primary text-base font-bold mb-6">
                             Geselecteerd: 1 jaar contract
@@ -391,6 +381,11 @@
                         </div>
                     </div>
 
+
+
+
+
+
                     <!-- info -->
                     <div class="card xl:flex flex-col gap-8 hidden">
                         <p class="text-batao-text text-base font-bold">
@@ -532,6 +527,7 @@
         </section>
     </dialog>
     <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="src/contractService.js"></script>
     <script src="src/index.js"></script>
 </body>
 

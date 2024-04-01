@@ -1,36 +1,11 @@
 const ACTIVE_TAB = 'active';
 const TAB_CLASS = 'tab';
 const TABS_CONTAINER = 'tabs';
+const TARIFFS_CONTAINER = 'tariffs';
 const MODAL_BACKDROP = 'modal-backdrop';
 const MODAL_CONTAINER = 'modal';
 const MODAL_HANDLER = '[data-modal]';
 const MODAL_CLOSE = '[data-close]';
-
-// let selectedTabNode = null;
-
-// function onTabClick(event) {
-//   const self = this;
-//   if (self.classList.contains(ACTIVE_TAB)) return;
-
-//   selectedTabNode.classList.remove(ACTIVE_TAB);
-//   self.classList.add(ACTIVE_TAB);
-//   selectedTabNode = self;
-
-//   console.log(event, selectedTabNode);
-// }
-
-// const initTabs = () => {
-//   const element = document.getElementById('tabs');
-//   selectedTabNode = element.getElementsByClassName(ACTIVE_TAB)[0];
-
-//   Array.from(element.children).forEach((elementNode) => {
-//     if (!elementNode.classList.contains(TAB_CLASS)) return;
-
-//     elementNode.addEventListener('click', onTabClick, true);
-//   });
-// };
-
-// initTabs();
 
 const modalBackdropEl = document.getElementsByClassName(MODAL_BACKDROP)[0];
 const modalEl = modalBackdropEl.getElementsByClassName(MODAL_CONTAINER)[0];
@@ -66,120 +41,68 @@ modalCloseElHandlers.forEach((handler) => {
   handler.addEventListener('click', hideModal, true);
 });
 
+// const appView = document.querySelector(`#app`);
+// ko.applyBindings(new AppViewModel(), appView);
+
 class TabViewModel {
-  constructor(indicator, monthsGratis) {
-    this.indicator = indicator;
-    this.monthsGratis = monthsGratis;
+  constructor(ContractService) {
+    this.contractService = ContractService.init();
+    this.contractsData = this.contractService.getContracts();
   }
 
   selectedContract = ko.observable(0);
 
-  contractsData = [
-    {
-      years: 1,
-      monthsGratis: 2,
-      tariffs: [
-        {
-          title: 'Shared',
-          perMonth: '179,00',
-          price: '149,17',
-        },
-        {
-          title: 'Onager',
-          perMonth: '439,00',
-          price: '365,83',
-        },
-        {
-          title: 'Scorpio',
-          perMonth: '879,00',
-          price: '732,50',
-        },
-      ],
-    },
-    {
-      years: 2,
-      monthsGratis: 4,
-      tariffs: [
-        {
-          title: 'Shared',
-          perMonth: '179,00',
-          price: '119,33',
-        },
-        {
-          title: 'Onager',
-          perMonth: '439,00',
-          price: '292,67',
-        },
-        {
-          title: 'Scorpio',
-          perMonth: '879,00',
-          price: '586,00',
-        },
-      ],
-    },
-    {
-      years: 3,
-      monthsGratis: 6,
-      tariffs: [
-        {
-          title: 'Shared',
-          perMonth: '179,00',
-          price: '89,50',
-        },
-        {
-          title: 'Onager',
-          perMonth: '439,00',
-          price: '219,50',
-        },
-        {
-          title: 'Scorpio',
-          perMonth: '879,00',
-          price: '439,50',
-        },
-      ],
-    },
-    {
-      years: 0,
-      monthsGratis: 0,
-      tariffs: [
-        {
-          title: 'Shared',
-          perMonth: '179,00',
-          price: '179,00',
-        },
-        {
-          title: 'Onager',
-          perMonth: '439,00',
-          price: '439,00',
-        },
-        {
-          title: 'Scorpio',
-          perMonth: '879,00',
-          price: '879,00',
-        },
-      ],
-    },
-  ];
-
-  test = ko.observable('some test value');
-
-  selectContract = (data, event) => {
-    let context = ko.contextFor(event.target);
-    let index = context.$index();
+  onContractSelect = (index) => {
     this.selectedContract(index);
-    // data.selected = !data.selected;
-    console.log('selected tab =>', data, context, index);
+    this.contractService.setSelectedTariff(index);
   };
 }
 
-const tabsView = document.querySelector(`#${TABS_CONTAINER}`);
-
-ko.applyBindings(new TabViewModel(1, 4), tabsView);
-
 ko.components.register('contract', {
   template: `
-  
-  
-  
+  <div class="card-sm relative cursor-pointer hovered"
+            data-bind="click: selectContract, clickBubble: false, css: {'active': isSelected() } ">
+        <!-- ko ifnot: !data.monthsGratis -->
+        <span class="label">
+            <span data-bind="text: data.monthsGratis"></span> maanden gratis
+        </span>
+        <!-- /ko -->
+        <div class="flex gap-4 mt-2">
+            <!-- ko ifnot: !data.years -->
+            <p class="count" data-bind="text: data.years"></p>
+            <!-- /ko -->
+            <div>
+                <p class="title">Jaar contract</p>
+                <p class="sub-title">Incl. verhuis service</p>
+            </div>
+        </div>
+    </div>
   `,
+  viewModel: function (params) {
+    const self = this;
+
+    self.index = params.index();
+    self.data = params.data;
+    self.isSelected = params.isSelected;
+
+    selectContract = (data) => {
+      params.onSelect(data.index);
+    };
+  },
 });
+
+const contractsView = document.querySelector(`#${TABS_CONTAINER}`);
+ko.applyBindings(new TabViewModel(ContractServiceInstance), contractsView);
+
+class TariffsViewModel {
+  constructor(ContractService) {
+    this.contractService = ContractService.init();
+
+    this.contractService.getTariffsByContract().subscribe(function (data) {
+      console.log('subscriber ', data);
+    });
+  }
+}
+
+const tariffsView = document.querySelector(`#${TARIFFS_CONTAINER}`);
+ko.applyBindings(new TariffsViewModel(ContractServiceInstance), tariffsView);

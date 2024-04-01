@@ -1,5 +1,6 @@
 {
    "sideEffects": false,
+    "type": "module",
    "scripts": {
       "watch": "npx tailwindcss -i custom.css -o styles.css --watch",
       "build": "webpack --config webpack.config.js"
