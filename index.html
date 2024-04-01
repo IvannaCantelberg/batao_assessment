@@ -529,12 +529,25 @@
 
     <div class="modal-backdrop flex flex-col" style="display: none;">
         <section class="modal card">
-            <h2 class="text-xl text-batao-primary text-center mb-8">U vraag aan voor</h2>
+            <h2 class="text-xl text-batao-primary text-center mb-8">Laat uw gegevens achter voor contact</h2>
 
+            <div class="grid grid-cols-1 grid-flow-row xl:grid-cols-2 gap-6 mb-8">
+                <label class="" for="Voor-en-achternaam">
+                    <input type="text" size="40" class="input-field" placeholder="Voor- en achternaam"
+                        name="Voor-en-achternaam" autofocus>
+                </label>
+                <label class="" for="tel">
+                    <input type="tel" size="40" class="input-field" placeholder="Telefoonnummer" name="tel">
+                </label>
+                <label class="xl:col-span-2" for="email">
+                    <input type="email" size="40" class="input-field" placeholder="E-mailadres" name="email"
+                        autocomplete="on">
+                </label>
+            </div>
 
             <footer class="flex gap-4 justify-end">
-                <button type="button" class="btn-accent">Aanvragen</button>
-                <button type="button" class="btn-light" data-close>Terug</button>
+                <button type="button" class="btn-light" data-close>Annuleren</button>
+                <button type="button" class="btn-accent">Bevestig</button>
             </footer>
 
         </section>

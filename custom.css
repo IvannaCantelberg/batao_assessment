@@ -89,7 +89,7 @@
 }
 
 .btn-light {
-    @apply bg-batao-card text-batao-text text-xs px-11 py-3 rounded-md hover:shadow-lg ;
+    @apply bg-batao-card text-batao-text text-xs px-11 py-3 rounded-md shadow-md shadow-batao-shadow hover:shadow-batao-shadow hover:shadow-xl;
     transition: box-shadow 0.2s linear;
 }
 
@@ -120,4 +120,8 @@
 
     /* opacity: 1; */
     
+}
+
+.modal .input-field {
+   @apply py-2 px-3 border-transparent border-r-4 text-batao-sub-text shadow-md shadow-batao-shadow focus:outline-batao-primary w-full;
 }

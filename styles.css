@@ -584,6 +584,10 @@ video {
   right: 0px;
 }
 
+.col-span-2{
+  grid-column: span 2 / span 2;
+}
+
 .m-auto{
   margin: auto;
 }
@@ -669,6 +673,10 @@ video {
 
 .grid-cols-1{
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -1022,12 +1030,19 @@ video {
   line-height: 1rem;
   --tw-text-opacity: 1;
   color: rgb(108 117 125 / var(--tw-text-opacity));
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: #90B8E840;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .btn-light:hover{
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: #90B8E840;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .btn-light {
@@ -1067,6 +1082,27 @@ video {
   /* opacity: 1; */
 }
 
+.modal .input-field{
+  width: 100%;
+  border-right-width: 4px;
+  border-color: transparent;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(71 71 71 / var(--tw-text-opacity));
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: #90B8E840;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.modal .input-field:focus{
+  outline-color: #353565;
+}
+
 @media (min-width: 640px){
   .sm\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1074,6 +1110,10 @@ video {
 }
 
 @media (min-width: 1280px){
+  .xl\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
+
   .xl\:block{
     display: block;
   }
@@ -1098,16 +1138,16 @@ video {
     grid-auto-flow: column;
   }
 
-  .xl\:grid-cols-\[200px\2c _auto\]{
-    grid-template-columns: 200px auto;
+  .xl\:grid-cols-\[210px\2c _auto\]{
+    grid-template-columns: 210px auto;
   }
 
   .xl\:grid-cols-tariff-section{
     grid-template-columns: minmax(auto, 300px) repeat(3, minmax(230px, auto));
   }
 
-  .xl\:grid-cols-\[210px\2c _auto\]{
-    grid-template-columns: 210px auto;
+  .xl\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .xl\:flex-col{
