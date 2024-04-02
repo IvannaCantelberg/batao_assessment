@@ -180,6 +180,14 @@
         <section class="modal card">
             <h2 class="text-xl text-batao-primary text-center mb-8">Laat uw gegevens achter voor meer informatie</h2>
 
+            <h3 class="text-lg text-batao-primary text-center mb-6">Geselecteerd tarief</h3>
+            <div>
+                <h3 class="text-batao-primary text-base font-bold">
+                    Shared
+                </h3>
+
+            </div>
+
             <form class="grid grid-cols-1 grid-flow-row xl:grid-cols-2 gap-6 " method="dialog">
                 <label class="" for="Voor-en-achternaam">
                     <input type="text" class="input-field" size="40" placeholder="Voor- en achternaam"
@@ -190,7 +198,7 @@
                 </label>
                 <label class="xl:col-span-2" for="email">
                     <input type="email" class="input-field" placeholder="E-mailadres *" name="email"
-                        pattern=".+@email\.com" autocomplete="on" required>
+                        pattern=".+@email\.com" autocomplete="on">
                 </label>
                 <div class="flex gap-4 justify-end mt-8 xl:col-span-2">
                     <button type="submit" class="btn-light" data-close>Annuleren</button>
@@ -205,6 +213,11 @@
     <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="src/contractService.js"></script>
     <script src="src/tariffsService.js"></script>
+
+    <script src="src/contractsViewModel.js"></script>
+    <script src="src/tariffsViewModel.js"></script>
+
+    <script src="src/contractComponnet.js"></script>
     <script src="src/index.js"></script>
 </body>
 

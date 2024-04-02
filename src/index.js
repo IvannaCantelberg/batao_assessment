@@ -18,7 +18,7 @@ const initModalHandler = () => {
   });
 };
 
-initModalHandler();
+// initModalHandler();
 
 function openModal() {
   modalBackdropEl.setAttribute('style', 'display: flex');
@@ -41,90 +41,23 @@ modalCloseElHandlers.forEach((handler) => {
   handler.addEventListener('click', hideModal, true);
 });
 
-class TabViewModel {
-  constructor(ContractService) {
-    this.contractService = ContractService.init();
-    this.contractsData = this.contractService.getContracts();
-  }
+class App {
+  bootstrap() {
+    const contractsView = document.querySelector(`#${TABS_CONTAINER}`);
+    ko.applyBindings(
+      new ContractsViewModel(ContractServiceInstance),
+      contractsView
+    );
 
-  selectedContract = ko.observable(0);
+    const tariffsView = document.querySelector(`#${TARIFFS_CONTAINER}`);
+    ko.applyBindings(
+      new TariffsViewModel(ContractServiceInstance, TariffService),
+      tariffsView
+    );
 
-  onContractSelect = (index) => {
-    this.selectedContract(index);
-    this.contractService.setSelectedTariff(index);
-  };
-}
-
-ko.components.register('contract', {
-  template: `
-  <div class="card-sm relative cursor-pointer hovered"
-            data-bind="click: selectContract, clickBubble: false, css: {'active': isSelected() } ">
-        <!-- ko ifnot: !data.monthsGratis -->
-        <span class="label">
-            <span data-bind="text: data.monthsGratis"></span> maanden gratis
-        </span>
-        <!-- /ko -->
-        <div class="flex gap-4 mt-2">
-            <!-- ko ifnot: !data.years -->
-            <p class="count" data-bind="text: data.years"></p>
-            <!-- /ko -->
-            <div>
-                <p class="title">Jaar contract</p>
-                <p class="sub-title">Incl. verhuis service</p>
-            </div>
-        </div>
-    </div>
-  `,
-  viewModel: function (params) {
-    const self = this;
-
-    self.index = params.index();
-    self.data = params.data;
-    self.isSelected = params.isSelected;
-
-    selectContract = (data) => {
-      params.onSelect(data.index);
-    };
-  },
-});
-
-const contractsView = document.querySelector(`#${TABS_CONTAINER}`);
-ko.applyBindings(new TabViewModel(ContractServiceInstance), contractsView);
-
-class TariffsViewModel {
-  constructor(ContractService, TariffService) {
-    this.contractService = ContractService.init();
-    this.tariffService = new TariffService();
-    let contract = this.contractService.getInitialTariffsByContract();
-
-    this.selectedYears = ko.observable(contract.years);
-
-    this.tariffsData = ko.observable(this.calculateTariff(contract));
-    this.tariffsDetails = this.contractService.getTariffsDetails();
-
-    this.contractService.getTariffsByContract().subscribe((contractData) => {
-      console.log('subscriber ', contractData);
-      console.log(this.calculateTariff(contractData));
-
-      this.selectedYears(contractData.years);
-      this.tariffsData(this.calculateTariff(contractData));
-    });
-  }
-
-  calculateTariff(contract) {
-    return contract.tariffs.map((item) => {
-      let data = this.tariffService.calculate({
-        monthsGratis: contract.monthsGratis,
-        perMonth: item.perMonth,
-      });
-
-      return { ...item, ...data };
-    });
+    initModalHandler();
   }
 }
 
-const tariffsView = document.querySelector(`#${TARIFFS_CONTAINER}`);
-ko.applyBindings(
-  new TariffsViewModel(ContractServiceInstance, TariffService),
-  tariffsView
-);
+const app = new App();
+app.bootstrap();
