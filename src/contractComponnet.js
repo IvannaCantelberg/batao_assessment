@@ -1,6 +1,6 @@
 ko.components.register('contract', {
   template: `
-  <div class="card-sm relative cursor-pointer hovered"
+  <div class="card-sm relative cursor-pointer hovered" 
             data-bind="click: selectContract, clickBubble: false, css: {'active': isSelected() } ">
         <!-- ko ifnot: !data.monthsGratis -->
         <span class="label">

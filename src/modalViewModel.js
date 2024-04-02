@@ -9,10 +9,6 @@ const modalCloseElHandlers = modalEl.querySelectorAll(MODAL_CLOSE);
 class ModalViewModal {
   static MODAL_HANDLER = '[data-modal]';
   data = ko.observable(null);
-  details = ko.computed(() => {
-    if (!this.data()) return {};
-    return this.data;
-  });
 
   constructor() {
     modalBackdropEl.addEventListener('click', this.hide, true);
@@ -21,8 +17,8 @@ class ModalViewModal {
       handler.addEventListener('click', this.hide, true);
     });
   }
-
-  mountTo(data, selector, element) {
+  test = 'some textt';
+  mountTo(data, selector) {
     const handlers = document.querySelectorAll(selector || MODAL_HANDLER);
     handlers.forEach((handler) => {
       handler.addEventListener('click', () => this.open(data), true);
@@ -40,7 +36,6 @@ class ModalViewModal {
   }
 
   open(details) {
-    console.log(details);
     this.data(details);
     modalBackdropEl.setAttribute('style', 'display: flex');
     modalEl.classList.add('open');
@@ -48,3 +43,16 @@ class ModalViewModal {
 }
 
 const ModalInstance = Object.freeze(new ModalViewModal());
+
+ko.bindingHandlers.modalHandler = {
+  init: (
+    element,
+    valueAccessor,
+    allBindingsAccessor,
+    viewModel,
+    bindingContext
+  ) => {
+    const unwrapped = ko.unwrap(valueAccessor());
+    element.addEventListener('click', unwrapped.bind(null, viewModel));
+  },
+};

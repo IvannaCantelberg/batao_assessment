@@ -23,7 +23,7 @@ class App {
     );
 
     const modalsView = document.querySelector(`#${MODAL_ID}`);
-    ko.applyBindings(new ModalViewModal(), modalsView);
+    ko.applyBindings(ModalInstance, modalsView);
   }
 }
 

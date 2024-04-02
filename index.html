@@ -57,7 +57,7 @@
                         <h3 class="text-batao-primary text-base font-bold mb-6">
                             Geselecteerd:
                             <!-- ko if: selectedYears-->
-                            <span data-bind="text: selectedYears">1</span>
+                            <span data-bind="text: selectedYears">1</span> jaar
                             <!-- /ko -->
 
                             <!-- ko ifnot: selectedYears-->
@@ -94,7 +94,7 @@
                         </p>
                     </div>
 
-                    <!-- ko foreach: { data: tariffsData, afterRender: renderedHandler } -->
+                    <!-- ko foreach: { data: tariffsData } -->
                     <div class="card flex flex-col gap-8 items-center">
                         <h3 class="text-batao-primary text-base font-bold" data-bind="text: title">
                             Shared
@@ -137,7 +137,8 @@
                                 € <span data-bind="text: savings"></span>
                             </p>
                         </div>
-                        <button class="btn-accent" data-modal>Aanvragen</button>
+                        <button data-bind="modalHandler: $parent.bindToButton" class="btn-accent"
+                            data-modal>Aanvragen</button>
 
                         <hr class="block xl:hidden divider-x" />
 
@@ -180,11 +181,13 @@
         <section class="modal card">
             <h2 class="text-xl text-batao-primary text-center mb-8">Laat uw gegevens achter voor meer informatie</h2>
 
-            <!-- <h3 class="text-lg text-batao-primary text-center mb-6">Geselecteerd tarief</h3> -->
-            <div>
-                <!-- <h3 data-bind="text: details.title" class="text-batao-primary text-base font-bold">
-                    Shared
-                </h3> -->
+            <h3 class="text-lg text-batao-primary text-center">
+                Geselecteerd tarief <span data-bind="text: data()?.title" class="font-semibold"></span>
+            </h3>
+            <!--  -->
+            <div class="text-batao-text text-center mb-8">
+
+                <span>Eerstejaar, per maand</span> <span data-bind="text: data()?.price"></span>
 
             </div>
 

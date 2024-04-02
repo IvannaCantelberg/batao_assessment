@@ -11,6 +11,7 @@
 .card-sm {
     @apply py-7 px-6 bg-batao-card shadow-lg shadow-batao-shadow  rounded-2xl;
     min-width: 190px;
+    height: 100%;
 } 
 
 .hovered {
@@ -19,7 +20,7 @@
 
 .card-sm .label {
     transition: all  0.2s linear;
-    @apply absolute top-2 right-2 py-[5px] px-[10px] bg-batao-label text-white text-xs leading-[14px] rounded-md;
+    @apply absolute top-1 right-1 py-[5px] px-[10px] bg-batao-label text-white text-xs leading-[14px] rounded-md;
 }
 
 .card-sm .count {

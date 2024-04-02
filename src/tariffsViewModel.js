@@ -23,13 +23,8 @@ class TariffsViewModel {
     });
   }
 
-  renderedHandler = (elements, data, event) => {
-    console.log(elements, data, event);
-    // let el = elements.find((el) => {
-    //   return !!el.querySelectorAll(selector);
-    // });
-    // console.log(el);
-    this.modal.mountTo(data, MODAL_HANDLER, elements);
+  bindToButton = (data) => {
+    this.modal.open(data);
   };
 
   calculateTariff = (contract) => {
