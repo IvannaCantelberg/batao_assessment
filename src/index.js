@@ -96,16 +96,18 @@ class TariffsViewModel {
     this.contractService = ContractService.init();
     this.tariffService = new TariffService();
     let contract = this.contractService.getInitialTariffsByContract();
-    // let tariffs = this.contractService.getInitialTariffsByContract().tariffs;
+
     this.selectedYears = ko.observable(contract.years);
 
     this.tariffsData = ko.observable(this.calculateTariff(contract));
+    this.tariffsDetails = this.contractService.getTariffsDetails();
 
     this.contractService.getTariffsByContract().subscribe((contractData) => {
       console.log('subscriber ', contractData);
       console.log(this.calculateTariff(contractData));
+
       this.selectedYears(contractData.years);
-      this.tariffsData(this.calculateTariff(contract));
+      this.tariffsData(this.calculateTariff(contractData));
     });
   }
 

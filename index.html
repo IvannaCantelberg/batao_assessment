@@ -95,7 +95,6 @@
                     </div>
 
                     <!-- ko foreach: tariffsData -->
-
                     <div class="card flex flex-col gap-8 items-center">
                         <h3 class="text-batao-primary text-base font-bold" data-bind="text: title">
                             Shared
@@ -142,366 +141,34 @@
 
                         <hr class="block xl:hidden divider-x" />
 
-                        <div class="flex flex-col gap-2 items-center xl:hidden">
+                        <div data-bind="foreach: $parent.tariffsDetails[$index()].data"
+                            class="flex flex-col gap-2 items-center xl:hidden">
                             <p class="text-batao-text text-base font-bold">
-                                Processor:
+                                <span data-bind="text: title"></span>:
                             </p>
                             <p class=" text-batao-text text-base">
-                                AMD Ryzen 5 3600
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Cores:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                Hexa-Core
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Geheugen:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                RAM 64GB DDR4
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Opslag:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                SSD 3 x 512 GB
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Bandbreedte:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                1 Gbit/s
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Aantal klanten:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                3
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Backup frequentie:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                Wekelijks
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Support:
-                            </p>
-
-                            <p class=" text-batao-text text-base">
-                                Kantooruren
+                                <span data-bind="text: value"></span>
                             </p>
                         </div>
                     </div>
                     <!-- /ko -->
 
-                    <!-- <div class="card flex flex-col gap-8 items-center">
-                        <h3 class="text-batao-primary text-base font-bold">
-                            Onager
-                        </h3>
-                        <div class="flex flex-col gap-4 items-center xl:items-end">
-                            <p class="xl:hidden text-batao-text text-xs font-bold">
-                                Eerste jaar, per maand
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                € 149,17
-                            </p>
-                            <p class="xl:hidden text-batao-text text-xs flex gap-2">
-                                <i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-3">
-                                        <path fill-rule="evenodd"
-                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-
-                                </i>
-                                Daarna, standaard tarief
-                            </p>
-                            <p class=" text-batao-text text-xs">
-                                € 179,00
-                            </p>
-                            <p class="xl:hidden text-batao-green text-xs flex gap-2">
-                                <i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-3">
-                                        <path fill-rule="evenodd"
-                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-
-                                </i>
-                                Ja bespaart
-                            </p>
-                            <p class=" text-batao-green text-xs">
-                                € 358,00
-                            </p>
-                        </div>
-                        <button class="btn-accent" data-modal>Aanvragen</button>
-
-                        <hr class="block xl:hidden divider-x" />
-                        <div class="flex flex-col gap-2 items-center xl:hidden ">
-                            <p class="text-batao-text text-base font-bold">
-                                Processor:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                AMD Ryzen 5 3600
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Cores:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                Hexa-Core
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Geheugen:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                RAM 64GB DDR4
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Opslag:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                SSD 2 x 512 GB
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Bandbreedte:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                1 Gbit/s
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Aantal klanten:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                1 (Privé server)
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Backup frequentie:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                Dagelijks
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Support:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                24 uur per dag
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="card flex flex-col gap-8 items-center">
-                        <h3 class="text-batao-primary text-base font-bold">
-                            Scorpio
-                        </h3>
-                        <div class="flex flex-col gap-4 items-center xl:items-end">
-                            <p class="xl:hidden text-batao-text text-xs font-bold">
-                                Eerste jaar, per maand
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                € 149,17
-                            </p>
-                            <p class="xl:hidden text-batao-text text-xs flex gap-2">
-                                <i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-3">
-                                        <path fill-rule="evenodd"
-                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-
-                                </i>
-                                Daarna, standaard tarief
-                            </p>
-                            <p class=" text-batao-text text-xs">
-                                € 179,00
-                            </p>
-                            <p class="xl:hidden text-batao-green text-xs flex gap-2">
-                                <i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-3">
-                                        <path fill-rule="evenodd"
-                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-
-                                </i>
-                                Ja bespaart
-                            </p>
-                            <p class=" text-batao-green text-xs">
-                                € 358,00
-                            </p>
-                        </div>
-                        <button class="btn-accent" data-modal>Aanvragen</button>
-
-                        <hr class="block xl:hidden divider-x" />
-                        <div class="flex flex-col gap-2 items-center xl:hidden ">
-                            <p class="text-batao-text text-base font-bold">
-                                Processor:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                AMD Ryzen 7 3700X
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Cores:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                Octa-Core
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Geheugen:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                RAM 64GB DDR4 ECC
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Opslag:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                SSD 2 x 1 TB
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Bandbreedte:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                1 Gbit/s
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Aantal klanten:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                1 (Privé server)
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Backup frequentie:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                Dagelijks
-                            </p>
-                            <p class="text-batao-text text-base font-bold">
-                                Support:
-                            </p>
-                            <p class=" text-batao-text text-base">
-                                24 uur per dag
-                            </p>
-                        </div>
-                    </div> -->
-
-
-
-
-
 
                     <!-- info -->
-                    <div class="card xl:flex flex-col gap-8 hidden">
+                    <div data-bind="foreach: tariffsDetails[0].data" class="card xl:flex flex-col gap-8 hidden">
                         <p class="text-batao-text text-base font-bold">
-                            Processor
+                            <span data-bind="text: title"></span>
                         </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Cores
-                        </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Geheugen
-                        </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Opslag
-                        </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Bandbreedte
-                        </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Aantal klanten
-                        </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Backup frequentie
-                        </p>
-                        <p class="text-batao-text text-base font-bold">
-                            Support
-                        </p>
-
                     </div>
 
-                    <div class="card xl:flex flex-col gap-8 items-center hidden">
+                    <!-- ko foreach: { data: tariffsDetails, as: 'details' }  -->
+                    <div data-bind="foreach: details.data" class="card xl:flex flex-col gap-8 hidden">
                         <p class=" text-batao-text text-base">
-                            AMD Ryzen 5 3600
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Hexa-Core
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            RAM 64GB DDR4
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            SSD 3 x 512 GB
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            1 Gbit/s
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            3
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Wekelijks
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Kantooruren
+                            <span data-bind="text: value"></span>
                         </p>
                     </div>
-                    <div class="card xl:flex flex-col gap-8 items-center hidden">
-                        <p class=" text-batao-text text-base">
-                            AMD Ryzen 5 3600
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Hexa-Core
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            RAM 64GB DDR4
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            SSD 2 x 512 GB
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            1 Gbit/s
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            1 (Privé server)
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Dagelijks
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            24 uur per dag
-                        </p>
-                    </div>
-                    <div class="card xl:flex flex-col gap-8 items-center hidden">
-                        <p class=" text-batao-text text-base">
-                            AMD Ryzen 7 3700X
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Octa-Core
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            RAM 64GB DDR4 ECC
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            SSD 2 x 1 TB
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            1 Gbit/s
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            1 (Privé server)
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            Dagelijks
-                        </p>
-                        <p class=" text-batao-text text-base">
-                            24 uur per dag
-                        </p>
-                    </div>
+                    <!-- /ko -->
+
 
                 </div>
             </div>
