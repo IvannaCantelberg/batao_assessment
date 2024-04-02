@@ -22,7 +22,6 @@
                 </p>
             </div>
 
-
             <div class="relative my-7 pr-[4.5rem]">
                 <span
                     class="absolute -top-5 right-0 py-[5px] px-[10px] bg-batao-green text-white text-xs leading-[14px] rounded-md">
@@ -38,7 +37,6 @@
                     <span class="text-base xl:text-xl  text-batao-text">Jaarlijks</span>
                 </div>
             </div>
-
 
             <div class="xl:grid xl:grid-flow-col xl:grid-cols-[210px,_auto] xl:gap-6 grid grid-flow-row">
                 <!-- Tabs -->
@@ -57,7 +55,15 @@
                     class="grid xl:grid-cols-tariff-section sm:grid-cols-3 grid-cols-1 grid-flow-row gap-6">
                     <div class="card xl:block hidden">
                         <h3 class="text-batao-primary text-base font-bold mb-6">
-                            Geselecteerd: 1 jaar contract
+                            Geselecteerd:
+                            <!-- ko if: selectedYears-->
+                            <span data-bind="text: selectedYears">1</span>
+                            <!-- /ko -->
+
+                            <!-- ko ifnot: selectedYears-->
+                            Geen
+                            <!-- /ko -->
+                            contract
                         </h3>
                         <p class="text-batao-text text-base my-4 font-bold">
                             Eerste jaar, per maand
@@ -88,8 +94,10 @@
                         </p>
                     </div>
 
+                    <!-- ko foreach: tariffsData -->
+
                     <div class="card flex flex-col gap-8 items-center">
-                        <h3 class="text-batao-primary text-base font-bold">
+                        <h3 class="text-batao-primary text-base font-bold" data-bind="text: title">
                             Shared
                         </h3>
                         <div class="flex flex-col gap-4 items-center xl:items-end">
@@ -97,7 +105,7 @@
                                 Eerste jaar, per maand
                             </p>
                             <p class="text-batao-text text-base font-bold">
-                                € 149,17
+                                € <span data-bind="text: price"></span>
                             </p>
                             <p class="xl:hidden text-batao-text text-xs flex gap-2">
                                 <i>
@@ -112,7 +120,7 @@
                                 Daarna, standaard tarief
                             </p>
                             <p class=" text-batao-text text-xs">
-                                € 179,00
+                                € <span data-bind="text: perMonth"></span>
                             </p>
                             <p class="xl:hidden text-batao-green text-xs flex gap-2">
                                 <i>
@@ -127,7 +135,7 @@
                                 Ja bespaart
                             </p>
                             <p class=" text-batao-green text-xs">
-                                € 358,00
+                                € <span data-bind="text: savings"></span>
                             </p>
                         </div>
                         <button class="btn-accent" data-modal>Aanvragen</button>
@@ -186,8 +194,9 @@
                             </p>
                         </div>
                     </div>
+                    <!-- /ko -->
 
-                    <div class="card flex flex-col gap-8 items-center">
+                    <!-- <div class="card flex flex-col gap-8 items-center">
                         <h3 class="text-batao-primary text-base font-bold">
                             Onager
                         </h3>
@@ -379,7 +388,7 @@
                                 24 uur per dag
                             </p>
                         </div>
-                    </div>
+                    </div> -->
 
 
 
@@ -528,6 +537,7 @@
     </dialog>
     <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="src/contractService.js"></script>
+    <script src="src/tariffsService.js"></script>
     <script src="src/index.js"></script>
 </body>
 

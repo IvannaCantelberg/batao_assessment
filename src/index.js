@@ -41,9 +41,6 @@ modalCloseElHandlers.forEach((handler) => {
   handler.addEventListener('click', hideModal, true);
 });
 
-// const appView = document.querySelector(`#app`);
-// ko.applyBindings(new AppViewModel(), appView);
-
 class TabViewModel {
   constructor(ContractService) {
     this.contractService = ContractService.init();
@@ -95,14 +92,37 @@ const contractsView = document.querySelector(`#${TABS_CONTAINER}`);
 ko.applyBindings(new TabViewModel(ContractServiceInstance), contractsView);
 
 class TariffsViewModel {
-  constructor(ContractService) {
+  constructor(ContractService, TariffService) {
     this.contractService = ContractService.init();
+    this.tariffService = new TariffService();
+    let contract = this.contractService.getInitialTariffsByContract();
+    // let tariffs = this.contractService.getInitialTariffsByContract().tariffs;
+    this.selectedYears = ko.observable(contract.years);
 
-    this.contractService.getTariffsByContract().subscribe(function (data) {
-      console.log('subscriber ', data);
+    this.tariffsData = ko.observable(this.calculateTariff(contract));
+
+    this.contractService.getTariffsByContract().subscribe((contractData) => {
+      console.log('subscriber ', contractData);
+      console.log(this.calculateTariff(contractData));
+      this.selectedYears(contractData.years);
+      this.tariffsData(this.calculateTariff(contract));
+    });
+  }
+
+  calculateTariff(contract) {
+    return contract.tariffs.map((item) => {
+      let data = this.tariffService.calculate({
+        monthsGratis: contract.monthsGratis,
+        perMonth: item.perMonth,
+      });
+
+      return { ...item, ...data };
     });
   }
 }
 
 const tariffsView = document.querySelector(`#${TARIFFS_CONTAINER}`);
-ko.applyBindings(new TariffsViewModel(ContractServiceInstance), tariffsView);
+ko.applyBindings(
+  new TariffsViewModel(ContractServiceInstance, TariffService),
+  tariffsView
+);

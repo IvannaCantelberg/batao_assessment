@@ -107,6 +107,10 @@ class ContractServiceSingleton {
       return ContractsData;
     };
 
+    const getInitialTariffsByContract = () => {
+      return this.selectedTariff();
+    };
+
     const getTariffsByContract = () => {
       return this.selectedTariff;
     };
@@ -117,6 +121,7 @@ class ContractServiceSingleton {
 
     return {
       getContracts,
+      getInitialTariffsByContract,
       getTariffsByContract,
       setSelectedTariff,
     };
