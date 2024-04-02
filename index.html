@@ -94,7 +94,7 @@
                         </p>
                     </div>
 
-                    <!-- ko foreach: tariffsData -->
+                    <!-- ko foreach: { data: tariffsData, afterRender: renderedHandler } -->
                     <div class="card flex flex-col gap-8 items-center">
                         <h3 class="text-batao-primary text-base font-bold" data-bind="text: title">
                             Shared
@@ -176,15 +176,15 @@
         </section>
     </main>
 
-    <dialog class="modal-backdrop flex flex-col p-4" style="display: none;">
+    <dialog id="modal" class="modal-backdrop flex flex-col p-4" style="display: none;">
         <section class="modal card">
             <h2 class="text-xl text-batao-primary text-center mb-8">Laat uw gegevens achter voor meer informatie</h2>
 
-            <h3 class="text-lg text-batao-primary text-center mb-6">Geselecteerd tarief</h3>
+            <!-- <h3 class="text-lg text-batao-primary text-center mb-6">Geselecteerd tarief</h3> -->
             <div>
-                <h3 class="text-batao-primary text-base font-bold">
+                <!-- <h3 data-bind="text: details.title" class="text-batao-primary text-base font-bold">
                     Shared
-                </h3>
+                </h3> -->
 
             </div>
 
@@ -216,6 +216,7 @@
 
     <script src="src/contractsViewModel.js"></script>
     <script src="src/tariffsViewModel.js"></script>
+    <script src="src/modalViewModel.js"></script>
 
     <script src="src/contractComponnet.js"></script>
     <script src="src/index.js"></script>
